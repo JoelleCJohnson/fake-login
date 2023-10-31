@@ -2,13 +2,13 @@ import { useState, useEffect } from "react"
 
 export default function Login() {
 
-    const[isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [error, setError] = useState()
 
     useEffect(() => {
-        if(isLoggedIn){
+        if (isLoggedIn) {
             document.title = "Watch your Back!"
-        } else{
+        } else {
             document.title = "Enter if you dare!"
         }
     }, [isLoggedIn])
@@ -17,12 +17,23 @@ export default function Login() {
         e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
-        if(email === 'joellej221@gmail.com' && password === '123456'){ // we would NEVER hardcode this password in the real world. Not secure.
+        if (email === 'joellej221@gmail.com' && password === '123456') { // we would NEVER hardcode this password in the real world. Not secure.
             setIsLoggedIn(true)
             setError()
         } else {
             setError('Invalid email or password')
         }
+    }
+
+    if (isLoggedIn) {
+        return (
+            <main>
+                <h2>You're Logged In!</h2>
+                <button onClick={() => {
+                    setIsLoggedIn(false)
+                }}>Log Out</button>
+            </main>
+        )
     }
 
     return (
@@ -41,9 +52,9 @@ export default function Login() {
                         <input type="password" name="password" />
                     </label>
 
-                        {error &&
-                            <p style={{ color: 'red' }}>{error}</p>
-                        }
+                    {error &&
+                        <p style={{ color: 'red' }}>{error}</p>
+                    }
 
                     <input type="submit" value="Log in" />
                 </form>
