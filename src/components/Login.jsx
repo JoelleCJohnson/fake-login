@@ -19,6 +19,9 @@ export default function Login() {
         const password = e.target.password.value
         if(email === 'joellej221@gmail.com' && password === '123456'){ // we would NEVER hardcode this password in the real world. Not secure.
             setIsLoggedIn(true)
+            setError()
+        } else {
+            setError('Invalid email or password')
         }
     }
 
@@ -37,6 +40,10 @@ export default function Login() {
                         Password:
                         <input type="password" name="password" />
                     </label>
+
+                        {error &&
+                            <p style={{ color: 'red' }}>{error}</p>
+                        }
 
                     <input type="submit" value="Log in" />
                 </form>
