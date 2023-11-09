@@ -29,9 +29,7 @@ export default function Login() {
         return (
             <main>
                 <h2>You're Logged In!</h2>
-                <button onClick={() => {
-                    setIsLoggedIn(false)
-                }}>Log Out</button>
+                <button onClick={() => {setIsLoggedIn(false)}}>Log Out</button>
             </main>
         )
     }
